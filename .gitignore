@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production builds
+dist/
+client/dist/
+server/dist/
+
+# Sensitive Environment Configurations (Protected)
+.env
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+client/.env
+!.env.example
+
+# Local SQLite databases & uploads
+server/data/*.db*
+server/data/uploads/
+data/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor & System Files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
