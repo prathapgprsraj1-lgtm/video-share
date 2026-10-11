@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "Anonymous real-time communication web application",
   "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
     "dev": "node scripts/start-dev.mjs",
     "dev:server": "npm --prefix server run dev",
     "dev:client": "npm --prefix client run dev",
     "build:client": "npm --prefix client run build",
     "build:server": "npm --prefix server run build",
-    "build": "npm run build:server && npm run build:client",
+    "build": "npm --prefix client run build",
+    "build:all": "npm --prefix server run build && npm --prefix client run build",
     "start": "npm --prefix server start",
     "test": "npm --prefix server test"
   }

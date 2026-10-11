@@ -65,7 +65,8 @@ export const RoomView: React.FC<RoomViewProps> = ({ roomId, initialInviteToken, 
   useEffect(() => {
     if (!token || !guest) return;
 
-    const s = io(window.location.origin, {
+    const socketUrl = import.meta.env.VITE_SOCKET_URL || window.location.origin;
+    const s = io(socketUrl, {
       auth: { token },
       transports: ['websocket', 'polling'],
     });
