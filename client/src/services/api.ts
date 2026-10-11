@@ -155,14 +155,21 @@ export const api = {
     hasPassword: boolean;
     waitingRoomEnabled: boolean;
   }> {
-    const res = await fetch(`${API_BASE}/invitations/validate`, {
+    let res = await fetch(`${API_BASE}/rooms/invitations/validate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token }),
     });
+    if (res.status === 404) {
+      res = await fetch(`${API_BASE}/invitations/validate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token }),
+      });
+    }
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      throw new Error(err.error || 'Invalid invitation');
+      throw new Error(err.error || 'Invalid or expired invitation');
     }
     return res.json();
   },

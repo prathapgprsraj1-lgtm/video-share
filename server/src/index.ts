@@ -70,6 +70,7 @@ app.get('/api/health', (_req, res) => {
 // Mount API routes
 app.use('/api/guest', guestRouter);
 app.use('/api/rooms', roomsRouter);
+app.use('/api', roomsRouter);
 app.use('/api', messagesRouter);
 app.use('/api', mediaRouter);
 
