@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: connectroom-backend
+    runtime: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: CORS_ORIGIN
+        value: '*'
+      - key: SESSION_SECRET
+        value: connectroom_super_secure_random_session_secret_32chars
